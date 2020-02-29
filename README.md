@@ -4,9 +4,11 @@
 
 
 ## 安装运行
-导入sql文件夹下的light-blog文件
-clone项目，加载maven，运行。
-（如果觉得有用欢迎star哦~）
+1. clone 项目,加载 maven。
+2. 还原数据库，导入 sql 文件夹下的 light-blog.sql 文件。
+3. 运行，大功告成。
+4. frontend-design 文件夹下为原型设计图及设计好的原始 HTML 文件，需要自取。
+5. 如果觉得有用欢迎 follow & star 哦~
 
 ## 项目介绍
 
