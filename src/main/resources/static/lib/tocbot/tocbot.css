@@ -52,7 +52,7 @@ a.toc-link {
 }
 
 .toc-link::before {
-    background-color: #EEE;
+    /*background-color: #EEE;*/
     content: ' ';
     display: inline-block;
     height: 20px;

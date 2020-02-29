@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/light-blog?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: root
+    password:
   jpa:
     hibernate:
       ddl-auto: none
@@ -14,8 +14,9 @@ logging:
     root: warn
     com.lrm: info
   file: log/blog-pro.log
-server:
-  port: 8081
+
+
+
 
 
 

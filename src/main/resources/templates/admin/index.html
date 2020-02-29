@@ -21,7 +21,7 @@
           <div class="ui dropdown  item">
             <div class="text">
               <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
-              李仁密
+
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
@@ -42,7 +42,7 @@
     <div class="ui container">
       <div class="ui success large  message">
         <h3>Hi,</h3>
-        <p>李仁密，欢迎登录！</p>
+        <p>欢迎登录！</p>
       </div>
 
       <img src="https://unsplash.it/1000/400?image=1005" alt="" class="ui rounded bordered fluid image">
@@ -54,7 +54,7 @@
 
 
   <!--底部footer-->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
@@ -85,8 +85,9 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee.</p>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee</p>
     </div>
+
   </footer>
   <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>

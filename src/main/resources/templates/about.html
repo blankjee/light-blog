@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我</title>
@@ -10,7 +10,7 @@
 <body>
 
   <!--导航-->
-  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+  <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">Blog</h2>
@@ -33,7 +33,7 @@
   </nav>
 
   <!--中间内容-->
-  <div  class="m-container m-padded-tb-big">
+  <div  class="m-container m-padded-tb-big animated fadeIn">
     <div class="ui container">
 
       <div class="ui stackable grid">
@@ -47,7 +47,7 @@
             <div class="ui header">关于我</div>
           </div>
           <div class="ui attached segment">
-            <p class="m-text">李仁密，一个独立开发者，折腾在 0 和 1 世界的大叔；一个终身学习者，誓将学习无限循环. 希望结识可以共同成长的小伙伴.</p>
+            <p class="m-text">XXXXXXXXXXXXXXXXXXXX</p>
             <p class="m-text">热爱编程，喜欢折腾，正在探索高效学习编程技术的方法...</p>
           </div>
           <div class="ui attached segment">
@@ -68,12 +68,12 @@
           <div class="ui bottom attached segment">
             <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
             <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
-            <a href="#" class="ui qq circular icon button" data-content="865729312" data-position="bottom center"><i class="qq icon"></i></a>
+            <a href="#" class="ui qq circular icon button" data-content="1257749706" data-position="bottom center"><i class="qq icon"></i></a>
           </div>
 
-          <div class="ui wechat-qr flowing popup transition hidden">
-            <img src="../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 110px">
-          </div>
+<!--          <div class="ui wechat-qr flowing popup transition hidden">-->
+<!--            <img src="../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 110px">-->
+<!--          </div>-->
           </div>
       </div>
 
@@ -82,16 +82,13 @@
 
   <br>
   <br>
-
   <!--底部footer-->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
-            <div class="item">
-              <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}"  class="ui rounded image" alt="" style="width: 110px">
-            </div>
+
           </div>
         </div>
         <div class="three wide column">
@@ -115,11 +112,14 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee.</p>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee</p>
     </div>
+
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <!--/*/</th:block>/*/-->
 
   <script>
     $('.menu.toggle').click(function () {

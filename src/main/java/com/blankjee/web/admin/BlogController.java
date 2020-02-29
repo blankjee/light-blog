@@ -1,7 +1,6 @@
 package com.blankjee.web.admin;
 
 import com.blankjee.po.Blog;
-import com.blankjee.po.Type;
 import com.blankjee.po.User;
 import com.blankjee.service.BlogService;
 import com.blankjee.service.TagService;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping("/admin")

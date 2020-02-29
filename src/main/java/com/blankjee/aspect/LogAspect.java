@@ -11,13 +11,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+
 @Aspect
 @Component
 public class LogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.blankjee.web.*.*(..))")
+    @Pointcut("execution(* com.lrm.web.*.*(..))")
     public void log() {}
 
 

@@ -33,7 +33,7 @@
   </nav>
 
   <!--中间内容-->
-  <div  class="m-container m-padded-tb-big">
+  <div  class="m-container m-padded-tb-big animated fadeIn">
     <div class="ui container">
       <div class="ui stackable grid">
         <!--左边博客列表-->
@@ -45,7 +45,7 @@
                 <h3 class="ui teal header">博客</h3>
               </div>
               <div class="right aligned column">
-                共 <h2 class="ui orange header m-inline-block m-text-thin"> 14 </h2> 篇
+                共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h2> 篇
               </div>
             </div>
           </div>
@@ -53,40 +53,41 @@
           <!--content-->
           <div class="ui attached  segment">
 
-            <div class="ui padded vertical segment m-padded-tb-large">
-              <div class="ui mobile reversed stackable grid">
+            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+              <div class="ui middle aligned mobile reversed stackable grid" >
                 <div class="eleven wide column">
-                  <h3 class="ui header">你真的理解什么是财富自由吗？</h3>
-                  <p class="m-text">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                  <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
+                  <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
                   <div class="ui grid">
                     <div class="eleven wide column">
                       <div class="ui mini horizontal link list">
                         <div class="item">
-                          <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
-                          <div class="content"><a href="#" class="header">李仁密</a></div>
+                          <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
+                          <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >李仁密</a></div>
                         </div>
                         <div class="item">
-                          <i class="calendar icon"></i> 2017-10-01
+                          <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
                         </div>
                         <div class="item">
-                          <i class="eye icon"></i> 2342
+                          <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
                         </div>
                       </div>
                     </div>
                     <div class="right aligned five wide column">
-                      <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
+                      <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin" th:text="${blog.type.name}">认知升级</a>
                     </div>
                   </div>
                 </div>
 
                 <div class="five wide column">
-                  <a href="#" target="_blank">
-                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
+                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                    <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
                   </a>
                 </div>
 
               </div>
             </div>
+            <!--/*-->
             <div class="ui padded vertical segment m-padded-tb-large">
               <div class="ui mobile reversed stackable grid">
                 <div class="eleven wide column">
@@ -393,18 +394,17 @@
 
               </div>
             </div>
-
-
+            <!--*/-->
           </div>
 
           <!--footer-->
-          <div class="ui bottom attached segment">
+          <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
             <div class="ui middle aligned two column grid">
               <div class="column">
-                <a href="#" class="ui mini teal basic button">上一页</a>
+                <a href="#" th:href="@{/(page=${page.number}-1)}"  th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
               </div>
               <div class="right aligned column">
-                <a href="#" class="ui mini teal basic button">下一页</a>
+                <a href="#" th:href="@{/(page=${page.number}+1)}"  th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
               </div>
             </div>
           </div>
@@ -422,16 +422,17 @@
                   <i class="idea icon"></i>分类
                 </div>
                 <div class="right aligned column">
-                  <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                  <a href="#" th:href="@{types/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                 </div>
               </div>
             </div>
             <div class="ui teal segment">
-              <div class="ui fluid vertical menu">
-                <a href="#" class="item">
-                  学习日志
-                  <div class="ui teal basic left pointing label">13</div>
+              <div class="ui fluid vertical menu" >
+                <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item"  th:each="type : ${types}">
+                  <span th:text="${type.name}">学习日志</span>
+                  <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                 </a>
+                <!--/*-->
                 <a href="#" class="item">
                   思考与感悟
                   <div class="ui teal basic left pointing label">13</div>
@@ -452,6 +453,7 @@
                   学习日志
                   <div class="ui teal basic left pointing label">13</div>
                 </a>
+                <!--*/-->
               </div>
             </div>
           </div>
@@ -464,21 +466,22 @@
                   <i class="tags icon"></i>标签
                 </div>
                 <div class="right aligned column">
-                  <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                  <a href="#" th:href="@{tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                 </div>
               </div>
             </div>
             <div class="ui teal segment">
+              <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+                <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+              </a>
+              <!--/*-->
               <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
+                论 <div class="detail">23</div>
               </a>
               <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
                 论 <div class="detail">23</div>
               </a>
               <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                论 <div class="detail">23</div>
-              </a>
-              <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
                 方法论 <div class="detail">23</div>
               </a>
               <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
@@ -499,6 +502,7 @@
               <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
                 方法论 <div class="detail">23</div>
               </a>
+              <!--*/-->
             </div>
           </div>
 
@@ -507,9 +511,10 @@
             <div class="ui secondary segment ">
               <i class="bookmark icon"></i>最新推荐
             </div>
-            <div class="ui segment">
-              <a href="#" target="_blank" class="m-black m-text-thin">用户故事（User Story）</a>
+            <div class="ui segment" th:each="blog : ${recommendBlogs}">
+              <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">用户故事（User Story）</a>
             </div>
+            <!--/*-->
             <div class="ui segment" >
               <a href="#" target="_blank" class="m-black m-text-thin">用户故事（User Story）</a>
             </div>
@@ -531,6 +536,7 @@
             <div class="ui segment">
               <a href="#" target="_blank" class="m-black m-text-thin">用户故事（User Story）</a>
             </div>
+            <!--*/-->
           </div>
 
           <!--二维码-->
@@ -547,16 +553,13 @@
 
   <br>
   <br>
-
   <!--底部footer-->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
-            <div class="item">
-              <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}"  class="ui rounded image" alt="" style="width: 110px">
-            </div>
+
           </div>
         </div>
         <div class="three wide column">
@@ -580,8 +583,9 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee.</p>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee</p>
     </div>
+
   </footer>
 <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
