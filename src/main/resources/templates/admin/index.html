@@ -10,7 +10,7 @@
 <body>
 
   <!--导航-->
-  <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+  <nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">管理后台</h2>
@@ -25,7 +25,7 @@
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <a href="#" class="item">注销</a>
+              <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
             </div>
           </div>
         </div>
@@ -35,87 +35,23 @@
       <i class="sidebar icon"></i>
     </a>
   </nav>
-  <div class="ui attached pointing menu">
-    <div class="ui container">
-      <div class="right menu">
-        <a href="#" class="item">发布</a>
-        <a href="#" class="teal active item">列表</a>
-      </div>
-    </div>
-  </div>
+
 
   <!--中间内容-->
   <div  class="m-container-small m-padded-tb-big">
     <div class="ui container">
-      <form action="#" method="post" class="ui segment form">
-        <div class="inline fields">
-          <div class="field">
-            <input type="text" name="title" placeholder="标题">
-          </div>
-          <div class="field">
-            <div class="ui selection dropdown">
-              <input type="hidden" name="type">
-              <i class="dropdown icon"></i>
-              <div class="default text">分类</div>
-              <div class="menu">
-                <div class="item" data-value="1">错误日志</div>
-                <div class="item" data-value="2">开发者手册</div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" id="recommend" name="recommend">
-              <label for="recommend">推荐</label>
-            </div>
-          </div>
-          <div class="field">
-            <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
-          </div>
-        </div>
-      </form>
+      <div class="ui success large  message">
+        <h3>Hi,</h3>
+        <p>李仁密，欢迎登录！</p>
+      </div>
 
-      <table class="ui celled table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>标题</th>
-            <th>类型</th>
-            <th>推荐</th>
-            <th>更新时间</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>刻意练习清单</td>
-            <td>认知升级</td>
-            <td>是</td>
-            <td>2017-10-02 09:45</td>
-            <td>
-              <a href="#" class="ui mini teal basic button">编辑</a>
-              <a href="#" class="ui mini red basic button">删除</a>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="6">
-              <div class="ui mini pagination menu">
-                <a class=" item">上一页</a>
-                <a class=" item">下一页</a>
-              </div>
-              <a href="#" class="ui mini right floated teal basic button">新增</a>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
+      <img src="https://unsplash.it/1000/400?image=1005" alt="" class="ui rounded bordered fluid image">
     </div>
   </div>
 
   <br>
   <br>
+
 
   <!--底部footer-->
   <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
@@ -152,7 +88,7 @@
       <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019 - 2020 blankjee Designed by blankjee.</p>
     </div>
   </footer>
-    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+  <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
   <!--/*/</th:block>/*/-->
